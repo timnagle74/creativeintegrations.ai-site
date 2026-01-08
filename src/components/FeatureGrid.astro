@@ -1,0 +1,120 @@
+---
+interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  features?: Feature[];
+}
+
+const defaultFeatures: Feature[] = [
+  {
+    title: "AI Voice Employee",
+    description: "Live voice conversations with all your inbound calls. Natural, intelligent responses 24/7.",
+    icon: "microphone"
+  },
+  {
+    title: "AI Chat Employee",
+    description: "Engage leads across SMS, webchat, and social media. Instant responses that convert.",
+    icon: "chat"
+  },
+  {
+    title: "Live Call Transfer",
+    description: "AI transfers calls to any number and sends texts with links to services when needed.",
+    icon: "phone-forward"
+  },
+  {
+    title: "Reviews Automation",
+    description: "Get more reviews and have AI respond to them automatically to build trust.",
+    icon: "star"
+  },
+  {
+    title: "AI Appointment Booking",
+    description: "Scheduling plus automated confirmation texts and reminders. Fill your calendar.",
+    icon: "calendar"
+  },
+  {
+    title: "AI Powered CRM",
+    description: "All your leads and customers in one place with all the tools to manage them.",
+    icon: "database"
+  },
+  {
+    title: "2-Way Texting & Email",
+    description: "Text, email, DM, Messenger, and WhatsApp all from one unified inbox.",
+    icon: "mail"
+  },
+  {
+    title: "Mobile App",
+    description: "Manage all your leads, customers, and interactions from anywhere.",
+    icon: "smartphone"
+  },
+  {
+    title: "Automated Newsletters",
+    description: "Answer a few questions and our AI will craft your monthly newsletter.",
+    icon: "newspaper"
+  }
+];
+
+const { 
+  title = "Everything to Streamline and Grow Your Business",
+  subtitle = "Access the tools, strategies, and insights you need to simplify operations, boost efficiency, and drive sustainable growth.",
+  features = defaultFeatures
+} = Astro.props;
+
+const iconPaths: Record<string, string> = {
+  "microphone": "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z",
+  "chat": "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  "phone-forward": "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z M17 8l4 4m0 0l-4 4m4-4H7",
+  "star": "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z",
+  "calendar": "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  "database": "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
+  "mail": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  "smartphone": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+  "newspaper": "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+};
+---
+
+<section class="section-padding bg-white">
+  <div class="container-width">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
+        {title}
+      </h2>
+      <p class="text-primary-600 text-lg max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature, index) => (
+        <div 
+          class="card p-6 group hover:border-accent-300 transition-all duration-300"
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          <div class="w-12 h-12 mb-4 bg-primary-100 rounded-xl flex items-center justify-center group-hover:bg-accent-500 transition-colors duration-300">
+            <svg 
+              class="w-6 h-6 text-primary-700 group-hover:text-white transition-colors duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[feature.icon] || iconPaths.star} />
+            </svg>
+          </div>
+          
+          <h3 class="font-display font-semibold text-primary-950 text-lg mb-2">
+            {feature.title}
+          </h3>
+          
+          <p class="text-primary-600 text-sm leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

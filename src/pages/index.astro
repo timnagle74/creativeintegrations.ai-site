@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsSection from '../components/StatsSection.astro';
+import FeatureShowcase from '../components/FeatureShowcase.astro';
+import TabbedChatShowcase from '../components/TabbedChatShowcase.astro';
+import IndustriesSection from '../components/IndustriesSection.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pageTitle = "AI Employees for Local Businesses";
+const pageDescription = "Never miss a call or lead again. Turn your business into a 24/7 profit-generating machine with AI employees that qualify leads, schedule appointments, and manage customer service.";
+
+// Homepage specific schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": pageTitle,
+  "description": pageDescription,
+  "url": "https://creativeintegrations.ai",
+  "mainEntity": {
+    "@type": "Service",
+    "name": "AI Employee Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Creative Integrations"
+    },
+    "description": "AI-powered voice and chat assistants for local businesses that handle calls, qualify leads, and schedule appointments 24/7.",
+    "serviceType": "AI Business Automation",
+    "areaServed": "United States",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Employee Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "397",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "397",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium Plan",
+          "price": "697",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "697",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Elite Plan",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        }
+      ]
+    }
+  }
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  schema={schema}
+>
+  <Hero />
+  <StatsSection />
+  <FeatureShowcase />
+  <TabbedChatShowcase />
+  <IndustriesSection />
+  <PricingTable />
+  <FAQSection />
+  <CTASection />
+</BaseLayout>

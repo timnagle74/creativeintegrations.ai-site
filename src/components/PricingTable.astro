@@ -1,0 +1,157 @@
+---
+interface PricingTier {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  cta: string;
+  ctaLink: string;
+}
+
+interface Props {
+  tiers?: PricingTier[];
+}
+
+const defaultTiers: PricingTier[] = [
+  {
+    name: "Pro",
+    price: "$397",
+    description: "Replace voicemail and automate reviews with AI response",
+    features: [
+      "AI Voice Employee (basic)",
+      "AI Voice Webchat Widget",
+      "Reviews with Automated Response",
+      "Chat support"
+    ],
+    cta: "Get Started",
+    ctaLink: "/contact?plan=pro"
+  },
+  {
+    name: "Premium",
+    price: "$697",
+    description: "Everything in Pro plus advanced AI Voice, Chat, CRM & Mobile app",
+    features: [
+      "AI Voice Employee (advanced)",
+      "Reviews with Automated Response",
+      "Live Call Transfers",
+      "AI Voice Webchat Widget",
+      "AI Chat Employee",
+      "AI Live Chat/Webchat",
+      "2-Way Texting",
+      "CRM",
+      "Mobile App",
+      "Chat support"
+    ],
+    highlighted: true,
+    cta: "Get Started",
+    ctaLink: "/contact?plan=premium"
+  },
+  {
+    name: "Elite",
+    price: "$997",
+    description: "Everything in Premium plus AI Custom Actions, Bookings & Newsletters",
+    features: [
+      "AI Voice Employee (advanced)",
+      "Reviews with Automated Response",
+      "Live Call Transfers",
+      "AI Voice Webchat Widget",
+      "AI Custom Actions",
+      "AI Appointment Booking & Reminders",
+      "AI Chat Employee",
+      "AI Live Chat/Webchat",
+      "AI Automated Newsletters",
+      "2-Way Texting",
+      "CRM",
+      "Workflow Automation",
+      "Mobile App",
+      "Chat support"
+    ],
+    cta: "Get Started",
+    ctaLink: "/contact?plan=elite"
+  }
+];
+
+const { tiers = defaultTiers } = Astro.props;
+---
+
+<section class="section-padding bg-gradient-section" id="pricing">
+  <div class="container-width">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
+        Simple, Transparent Pricing
+      </h2>
+      <p class="text-primary-600 text-lg max-w-2xl mx-auto">
+        Choose the plan that fits your business. All plans include setup and onboarding.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {tiers.map((tier, index) => (
+        <div 
+          class={`relative rounded-2xl p-8 transition-all duration-300 ${
+            tier.highlighted 
+              ? 'bg-primary-950 text-white scale-105 shadow-2xl shadow-primary-950/20' 
+              : 'bg-white border border-primary-200 hover:border-primary-300 hover:shadow-lg'
+          }`}
+        >
+          {tier.highlighted && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="px-4 py-1 bg-accent-500 text-white text-sm font-semibold rounded-full">
+                Most Popular
+              </span>
+            </div>
+          )}
+          
+          <div class="text-center mb-8">
+            <h3 class={`font-display font-bold text-2xl mb-2 ${tier.highlighted ? 'text-white' : 'text-primary-950'}`}>
+              {tier.name}
+            </h3>
+            <div class="flex items-baseline justify-center gap-1 mb-3">
+              <span class={`font-display font-bold text-5xl ${tier.highlighted ? 'text-white' : 'text-primary-950'}`}>
+                {tier.price}
+              </span>
+              <span class={tier.highlighted ? 'text-primary-300' : 'text-primary-500'}>/month</span>
+            </div>
+            <p class={`text-sm ${tier.highlighted ? 'text-primary-300' : 'text-primary-600'}`}>
+              {tier.description}
+            </p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            {tier.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg 
+                  class={`w-5 h-5 flex-shrink-0 mt-0.5 ${tier.highlighted ? 'text-accent-400' : 'text-accent-600'}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class={`text-sm ${tier.highlighted ? 'text-primary-200' : 'text-primary-700'}`}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href={tier.ctaLink}
+            class={`block w-full text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+              tier.highlighted 
+                ? 'bg-accent-500 text-white hover:bg-accent-600 shadow-lg shadow-accent-500/30' 
+                : 'bg-primary-950 text-white hover:bg-primary-800'
+            }`}
+          >
+            {tier.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <p class="text-center mt-8 text-primary-500 text-sm">
+      No contracts — cancel anytime. One-time setup fee based on scope of project.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pageTitle = "Features";
+const pageDescription = "Discover all the AI-powered features that help your business capture more leads, book more appointments, and provide 24/7 customer service.";
+
+const featureCategories = [
+  {
+    title: "AI Voice Employee",
+    description: "Your 24/7 virtual receptionist that handles calls like a real human",
+    features: [
+      {
+        title: "Natural Voice Conversations",
+        description: "Advanced AI engages callers in natural, human-like conversations. No robotic responses — your customers get a real conversational experience.",
+        icon: "microphone"
+      },
+      {
+        title: "Custom Working Hours",
+        description: "Choose when your AI employee responds. After hours, weekends, or 24/7 — you're in control.",
+        icon: "clock"
+      },
+      {
+        title: "Live Call Transfers",
+        description: "AI can transfer calls to any number when needed. Complex issues go straight to your team.",
+        icon: "phone-forward"
+      },
+      {
+        title: "Information Gathering",
+        description: "Collect contact info, service needs, budget, and any custom questions before connecting with your team.",
+        icon: "clipboard"
+      },
+      {
+        title: "Email Summaries",
+        description: "Get transcripts and summaries of every call delivered to your inbox automatically.",
+        icon: "mail"
+      },
+      {
+        title: "Custom Voice & Tone",
+        description: "Choose from multiple voices and customize the personality to match your brand.",
+        icon: "settings"
+      }
+    ]
+  },
+  {
+    title: "AI Chat Employee",
+    description: "Instant engagement across every text-based channel",
+    features: [
+      {
+        title: "SMS Conversations",
+        description: "Respond to text messages instantly with intelligent, contextual responses that move leads through your funnel.",
+        icon: "message"
+      },
+      {
+        title: "Website Live Chat",
+        description: "Engage visitors the moment they land. Answer questions, capture info, and guide buying decisions.",
+        icon: "chat"
+      },
+      {
+        title: "Missed Call Text Back",
+        description: "Every missed call gets an instant text. Convert hang-ups into conversations automatically.",
+        icon: "phone-missed"
+      },
+      {
+        title: "Meta & Social DMs",
+        description: "Respond to Facebook, Instagram, and Messenger inquiries instantly. Turn social engagement into sales.",
+        icon: "share"
+      }
+    ]
+  },
+  {
+    title: "Reviews & Reputation",
+    description: "Build trust and climb search rankings automatically",
+    features: [
+      {
+        title: "Automated Review Requests",
+        description: "Send perfectly-timed review requests to happy customers. Grow your 5-star reviews on autopilot.",
+        icon: "star"
+      },
+      {
+        title: "AI Review Responses",
+        description: "Every review gets a thoughtful, personalized response. Good or bad — AI handles it professionally.",
+        icon: "reply"
+      },
+      {
+        title: "Reputation Monitoring",
+        description: "Track your ratings across platforms. Get alerts when reviews come in.",
+        icon: "eye"
+      }
+    ]
+  },
+  {
+    title: "CRM & Automation",
+    description: "Everything connected in one powerful platform",
+    features: [
+      {
+        title: "AI-Powered CRM",
+        description: "All your leads and customers in one place with intelligent tagging and follow-up suggestions.",
+        icon: "database"
+      },
+      {
+        title: "Appointment Booking",
+        description: "AI schedules appointments directly on your calendar. Automated confirmations and reminders included.",
+        icon: "calendar"
+      },
+      {
+        title: "Workflow Automation",
+        description: "Custom actions trigger automatically. Send booking links, service menus, follow-ups — all hands-free.",
+        icon: "zap"
+      },
+      {
+        title: "2-Way Communication",
+        description: "Text, email, DM, WhatsApp — all from one unified inbox. Never miss a message.",
+        icon: "inbox"
+      },
+      {
+        title: "Mobile App",
+        description: "Manage everything from your phone. Respond to leads, check appointments, view reports — anywhere.",
+        icon: "smartphone"
+      },
+      {
+        title: "Automated Newsletters",
+        description: "Answer a few questions and AI crafts your monthly newsletter. Stay top-of-mind effortlessly.",
+        icon: "newspaper"
+      }
+    ]
+  }
+];
+
+const iconPaths: Record<string, string> = {
+  "microphone": "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z",
+  "clock": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  "phone-forward": "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+  "clipboard": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
+  "mail": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  "settings": "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+  "message": "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+  "chat": "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  "phone-missed": "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+  "share": "M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z",
+  "star": "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z",
+  "reply": "M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6",
+  "eye": "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
+  "database": "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
+  "calendar": "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  "zap": "M13 10V3L4 14h7v7l9-11h-7z",
+  "inbox": "M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4",
+  "smartphone": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+  "newspaper": "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero -->
+  <section class="bg-gradient-hero relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"></div>
+    
+    <div class="relative container-width section-padding text-center">
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Powerful Features,<br />
+        <span class="text-gradient">Simple to Use</span>
+      </h1>
+      <p class="text-xl text-primary-200 max-w-2xl mx-auto mb-8">
+        Everything you need to capture more leads, book more appointments, and provide exceptional customer service — 24/7.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:877-482-4368" class="btn-primary text-lg px-8 py-4">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Try AI Voice Demo
+        </a>
+        <a href="/pricing" class="btn-secondary">
+          View Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Feature Categories -->
+  {featureCategories.map((category, catIndex) => (
+    <section class={`section-padding ${catIndex % 2 === 0 ? 'bg-white' : 'bg-gradient-section'}`}>
+      <div class="container-width">
+        <div class="text-center mb-12">
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
+            {category.title}
+          </h2>
+          <p class="text-primary-600 text-lg max-w-2xl mx-auto">
+            {category.description}
+          </p>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {category.features.map((feature) => (
+            <div class="card p-6 group hover:border-accent-300">
+              <div class="w-12 h-12 mb-4 bg-primary-100 rounded-xl flex items-center justify-center group-hover:bg-accent-500 transition-colors duration-300">
+                <svg 
+                  class="w-6 h-6 text-primary-700 group-hover:text-white transition-colors duration-300" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[feature.icon] || iconPaths.star} />
+                </svg>
+              </div>
+              
+              <h3 class="font-display font-semibold text-primary-950 text-lg mb-2">
+                {feature.title}
+              </h3>
+              
+              <p class="text-primary-600 text-sm leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  
+  <CTASection />
+</BaseLayout>
