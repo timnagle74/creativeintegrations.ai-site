@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const pageTitle = "Creative Integrations vs Ruby Receptionist";
+const pageDescription = "Compare Creative Integrations AI employees with Ruby Receptionist live answering service. Discover the advantages of AI-powered 24/7 automation.";
+
+const comparisonData = [
+  {
+    feature: "24/7 Availability",
+    us: "Always on, every day of the year",
+    them: "Business hours only (extended hours extra)",
+    winner: "us"
+  },
+  {
+    feature: "Response Time",
+    us: "Instant - answers in under 1 second",
+    them: "Depends on receptionist availability",
+    winner: "us"
+  },
+  {
+    feature: "Monthly Cost",
+    us: "Flat $397/mo for unlimited",
+    them: "$449/mo for just 100 minutes",
+    winner: "us"
+  },
+  {
+    feature: "Overage Charges",
+    us: "None - unlimited calls included",
+    them: "$4.49+ per additional minute",
+    winner: "us"
+  },
+  {
+    feature: "Simultaneous Calls",
+    us: "Unlimited - never a busy signal",
+    them: "Limited by available receptionists",
+    winner: "us"
+  },
+  {
+    feature: "Consistency",
+    us: "Identical experience every call",
+    them: "Varies by receptionist",
+    winner: "us"
+  },
+  {
+    feature: "CRM Integration",
+    us: "Deep native integration included",
+    them: "Limited integrations",
+    winner: "us"
+  },
+  {
+    feature: "Appointment Booking",
+    us: "Real-time calendar sync and booking",
+    them: "Manual scheduling process",
+    winner: "us"
+  },
+  {
+    feature: "SMS/Text Support",
+    us: "Full two-way texting included",
+    them: "Additional fee required",
+    winner: "us"
+  },
+  {
+    feature: "Chat Widget",
+    us: "Included in all plans",
+    them: "Ruby Chat is separate product",
+    winner: "us"
+  },
+  {
+    feature: "Human Touch",
+    us: "Smart escalation when needed",
+    them: "Always human (their selling point)",
+    winner: "tie"
+  },
+  {
+    feature: "Setup Time",
+    us: "24-48 hours to go live",
+    them: "Several days onboarding",
+    winner: "us"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-primary-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block px-4 py-1 bg-accent-100 text-accent-700 rounded-full text-sm font-medium mb-6">
+          Comparison
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Creative Integrations vs <span class="text-accent-600">Ruby</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Ruby charges by the minute. We don't. See why businesses are switching to AI employees that deliver unlimited value at a predictable price.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/pricing" class="btn-primary">
+            View Our Pricing
+          </a>
+          <a href="tel:877-482-4368" class="btn-secondary">
+            Try Our AI Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2">$0</div>
+          <div class="text-sm text-gray-600">Per Minute Charges</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2">24/7</div>
+          <div class="text-sm text-gray-600">No Extra Charge</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2">50%+</div>
+          <div class="text-sm text-gray-600">Cost Savings</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-accent-600 mb-2">∞</div>
+          <div class="text-sm text-gray-600">Call Capacity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          Feature-by-Feature Comparison
+        </h2>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b-2 border-gray-200">
+                <th class="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
+                <th class="text-left py-4 px-4 font-semibold text-accent-600 bg-accent-50 rounded-t-lg">Creative Integrations</th>
+                <th class="text-left py-4 px-4 font-semibold text-gray-600">Ruby Receptionist</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonData.map((row, index) => (
+                <tr class={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : ''}`}>
+                  <td class="py-4 px-4 font-medium text-gray-900">{row.feature}</td>
+                  <td class="py-4 px-4 bg-accent-50/50">
+                    <div class="flex items-start gap-2">
+                      {row.winner === 'us' && (
+                        <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      )}
+                      <span class="text-gray-700">{row.us}</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-gray-600">{row.them}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Comparison -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+          The True Cost of Ruby
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Ruby's per-minute pricing seems affordable until you do the math. Here's what it really costs.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Ruby -->
+          <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Ruby Receptionist</h3>
+            <div class="text-3xl font-bold text-gray-600 mb-2">$449</div>
+            <div class="text-sm text-gray-500 mb-6">per month (100 minutes only)</div>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>$4.49 per additional minute</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>200 minutes = $898/month</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>After-hours is additional cost</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Ruby Chat is separate ($149+/mo)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Unpredictable monthly bills</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Creative Integrations -->
+          <div class="bg-accent-600 rounded-2xl p-8 text-white relative overflow-hidden">
+            <div class="absolute top-4 right-4 bg-white/20 px-3 py-1 rounded-full text-sm font-medium">
+              Best Value
+            </div>
+            <h3 class="text-xl font-bold mb-4">Creative Integrations</h3>
+            <div class="text-3xl font-bold mb-2">$397</div>
+            <div class="text-sm text-white/80 mb-6">per month (unlimited everything)</div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Unlimited minutes included</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>24/7 at no additional cost</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Chat widget included</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>SMS texting included</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Predictable, flat pricing</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cost Calculator Example -->
+        <div class="mt-12 bg-white rounded-2xl p-8 border border-gray-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">Real-World Cost Example</h3>
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-sm text-gray-500 mb-2">Scenario</div>
+              <div class="text-lg font-semibold text-gray-900">Busy HVAC Company</div>
+              <div class="text-gray-600">300 minutes/month</div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-2">Ruby Cost</div>
+              <div class="text-2xl font-bold text-red-600">$1,347/mo</div>
+              <div class="text-gray-600 text-sm">$449 base + $898 overage</div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-2">Creative Integrations</div>
+              <div class="text-2xl font-bold text-green-600">$397/mo</div>
+              <div class="text-gray-600 text-sm">Same price, unlimited calls</div>
+            </div>
+          </div>
+          <div class="text-center mt-6 pt-6 border-t border-gray-100">
+            <span class="text-2xl font-bold text-accent-600">Save $950/month</span>
+            <span class="text-gray-600 ml-2">($11,400/year)</span>
+          </div>
+        </div>
+
+        <p class="text-center text-gray-500 mt-8 text-sm">
+          * Ruby pricing based on publicly available information as of 2025. Prices may vary.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Switch Section -->
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          Why Businesses Switch from Ruby
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Predictable Costs</h3>
+                <p class="text-gray-600">No more surprise bills from overage minutes. Know exactly what you'll pay every month.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">True 24/7 Coverage</h3>
+                <p class="text-gray-600">Ruby's after-hours service costs extra. Ours is included - nights, weekends, holidays.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Instant Response</h3>
+                <p class="text-gray-600">No hold times, no waiting for the next available receptionist. Every call answered instantly.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">All-in-One Platform</h3>
+                <p class="text-gray-600">Voice, SMS, chat, and CRM in one package. Ruby charges separately for each.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Scale Without Penalty</h3>
+                <p class="text-gray-600">Grow your business without growing your phone bill. Our pricing stays flat.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Consistent Quality</h3>
+                <p class="text-gray-600">Same perfect experience every time. No variability between different receptionists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
