@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pageTitle = "Frequently Asked Questions";
+const pageDescription = "Common questions about AI employees, AI receptionists, pricing, setup, and how our services work for local businesses.";
+
+const faqCategories = [
+  {
+    name: "General",
+    faqs: [
+      {
+        question: "What are AI Employees?",
+        answer: "AI Employees are advanced digital systems designed to autonomously perform tasks such as lead qualification, appointment scheduling, and customer service, thereby enhancing efficiency and customer engagement. They work 24/7 and can handle unlimited simultaneous conversations."
+      },
+      {
+        question: "How do AI Voice and AI Chat Employees work?",
+        answer: "AI Voice Employees interact with customers over the phone, understanding and responding to inquiries using natural language processing. AI Chat Employees engage with customers through text-based channels like SMS, web chat, and social media, providing instant support and information."
+      },
+      {
+        question: "Do AI Employees sound robotic?",
+        answer: "No. Our AI uses advanced speech synthesis to sound natural and human-like. Most callers can't tell they're talking to AI. You can hear it yourself by calling our demo line at 877-482-4368."
+      },
+      {
+        question: "Can AI Employees handle complex conversations?",
+        answer: "Yes. Our AI can handle nuanced, multi-turn conversations and adapt based on what callers say. For truly complex situations or when a caller specifically requests a human, AI can transfer the call to your team."
+      }
+    ]
+  },
+  {
+    name: "Pricing & Plans",
+    faqs: [
+      {
+        question: "How much does an AI receptionist cost?",
+        answer: "Our plans start at $397/month for the Pro plan which includes AI Voice Employee, webchat widget, and automated review responses. Premium is $697/month and Elite is $997/month with additional features like appointment booking, custom actions, and automated newsletters."
+      },
+      {
+        question: "Is there a setup fee?",
+        answer: "Yes, there is a one-time setup fee based on the scope of your project. This covers custom AI training for your business, integration setup, and onboarding. We'll discuss this during your strategy session."
+      },
+      {
+        question: "Are there contracts or commitments?",
+        answer: "No long-term contracts. All plans are month-to-month and you can cancel anytime. We believe our service should earn your business every month."
+      },
+      {
+        question: "Are there usage limits?",
+        answer: "Plans include generous usage allowances that work for most businesses. If you have extremely high call volumes, we'll work with you on a custom plan. Most businesses never hit the limits."
+      }
+    ]
+  },
+  {
+    name: "Setup & Integration",
+    faqs: [
+      {
+        question: "How long does setup take?",
+        answer: "Most businesses are up and running within 1-2 weeks. This includes AI training, integration setup, testing, and your onboarding session. Complex setups with multiple integrations may take longer."
+      },
+      {
+        question: "Do I need to change my phone number?",
+        answer: "No. We can forward calls from your existing number to your AI employee, or provide a new dedicated number. Your customers don't need to know anything changed."
+      },
+      {
+        question: "How is the AI trained on my business?",
+        answer: "During setup, we gather information about your services, pricing, common questions, and processes. We train the AI on your specific business so it can answer questions and handle calls exactly how you would."
+      },
+      {
+        question: "Can AI integrate with my existing tools?",
+        answer: "Yes. Our AI integrates with popular calendars, CRMs, and business tools. During your strategy call, we'll discuss your current tools and how to connect everything."
+      }
+    ]
+  },
+  {
+    name: "Features & Capabilities",
+    faqs: [
+      {
+        question: "Can AI book appointments?",
+        answer: "Yes. AI can schedule appointments directly on your calendar, send confirmations, and automated reminders. It respects your availability rules and can handle rescheduling too."
+      },
+      {
+        question: "Can AI transfer calls to humans?",
+        answer: "Absolutely. AI can transfer calls to any phone number when needed — for emergencies, complex issues, or when a caller requests to speak with a person."
+      },
+      {
+        question: "How does the review automation work?",
+        answer: "AI sends review requests to customers at the optimal time after service. When reviews come in, AI responds to them automatically with personalized, professional responses."
+      },
+      {
+        question: "Can I customize what AI says?",
+        answer: "Yes. We customize the AI's personality, greeting, and responses to match your brand. You have full control over how your AI represents your business."
+      }
+    ]
+  }
+];
+
+// Generate FAQ Schema
+const allFaqs = faqCategories.flatMap(cat => cat.faqs);
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": allFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} schema={faqSchema}>
+  <!-- Hero -->
+  <section class="bg-gradient-hero relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    
+    <div class="relative container-width section-padding text-center">
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Frequently Asked<br />
+        <span class="text-gradient">Questions</span>
+      </h1>
+      <p class="text-xl text-primary-200 max-w-2xl mx-auto">
+        Everything you need to know about AI employees and our services. Can't find what you're looking for? Contact us.
+      </p>
+    </div>
+  </section>
+  
+  <!-- FAQ Categories -->
+  <section class="section-padding bg-white">
+    <div class="container-width">
+      <div class="max-w-3xl mx-auto">
+        {faqCategories.map((category, catIndex) => (
+          <div class={catIndex > 0 ? 'mt-12' : ''}>
+            <h2 class="font-display text-2xl font-bold text-primary-950 mb-6 pb-2 border-b border-primary-200">
+              {category.name}
+            </h2>
+            
+            <div class="space-y-4">
+              {category.faqs.map((faq, faqIndex) => (
+                <details 
+                  class="card overflow-hidden group"
+                  id={`faq-${catIndex}-${faqIndex}`}
+                >
+                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                    <h3 class="font-display font-semibold text-primary-950 text-lg pr-4">
+                      {faq.question}
+                    </h3>
+                    <span class="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center group-open:bg-accent-500 transition-colors duration-300">
+                      <svg 
+                        class="w-4 h-4 text-primary-600 group-open:text-white group-open:rotate-180 transition-all duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div class="px-6 pb-6">
+                    <p class="text-primary-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Contact CTA -->
+      <div class="mt-16 text-center">
+        <div class="card-dark inline-block p-8 max-w-xl mx-auto">
+          <h3 class="font-display font-bold text-white text-xl mb-3">Still have questions?</h3>
+          <p class="text-primary-300 mb-6">Talk to our AI demo or reach out to our team directly.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:877-482-4368" class="btn-primary">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              AI Demo
+            </a>
+            <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <CTASection />
+</BaseLayout>

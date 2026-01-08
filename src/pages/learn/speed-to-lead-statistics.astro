@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const pageTitle = "Speed to Lead: Why Response Time Matters";
+const pageDescription = "The data behind lead response time. Why being first to answer wins more business and how fast you need to respond to maximize conversions.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": pageTitle,
+  "description": pageDescription,
+  "author": { "@type": "Organization", "name": "Creative Integrations" },
+  "publisher": { "@type": "Organization", "name": "Creative Integrations" },
+  "datePublished": "2024-01-15",
+  "dateModified": "2024-01-15"
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} schema={schema}>
+  <section class="bg-gradient-hero relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="relative container-width section-padding">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-accent-300 text-sm font-medium mb-6">
+          <span>Insights</span>
+          <span class="text-primary-400">•</span>
+          <span>6 min read</span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-6">{pageTitle}</h1>
+        <p class="text-xl text-primary-200">{pageDescription}</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-padding bg-white">
+    <div class="container-width">
+      <div class="max-w-3xl mx-auto">
+        <article class="prose prose-lg prose-primary max-w-none">
+          <p class="lead text-xl text-primary-700">
+            Speed to lead — the time it takes to respond to an inquiry — is one of the most critical factors in converting leads to customers. The data is clear: faster response times dramatically increase conversion rates.
+          </p>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">The Numbers Don't Lie</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            Research consistently shows that response time has a massive impact on lead conversion. Here are the statistics every business should know:
+          </p>
+          
+          <div class="grid sm:grid-cols-2 gap-4 my-8">
+            <div class="bg-accent-50 rounded-xl p-6 text-center border-2 border-accent-200">
+              <div class="text-4xl font-display font-bold text-accent-700">78%</div>
+              <p class="text-primary-600 mt-2">of customers buy from the first business to respond</p>
+            </div>
+            <div class="bg-primary-50 rounded-xl p-6 text-center">
+              <div class="text-4xl font-display font-bold text-primary-950">5 min</div>
+              <p class="text-primary-600 mt-2">Leads contacted within 5 minutes are 21x more likely to convert</p>
+            </div>
+            <div class="bg-primary-50 rounded-xl p-6 text-center">
+              <div class="text-4xl font-display font-bold text-primary-950">10x</div>
+              <p class="text-primary-600 mt-2">Contact rates drop 10x after the first hour</p>
+            </div>
+            <div class="bg-primary-50 rounded-xl p-6 text-center">
+              <div class="text-4xl font-display font-bold text-primary-950">85%</div>
+              <p class="text-primary-600 mt-2">of callers who reach voicemail never call back</p>
+            </div>
+          </div>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">The 5-Minute Window</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            A landmark study by Lead Response Management found that the odds of contacting a lead decrease by 10x in the first hour, and the odds of qualifying that lead decrease by 6x. But the most dramatic drop happens in the first 5 minutes.
+          </p>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            Why? When someone reaches out to your business, they're in buying mode. They have a problem and they want it solved. Every minute that passes, they're:
+          </p>
+          
+          <ul class="space-y-2 mb-6 text-primary-700">
+            <li>• Contacting your competitors</li>
+            <li>• Losing urgency and moving on to other tasks</li>
+            <li>• Finding alternative solutions</li>
+            <li>• Forgetting the specific pain that triggered the inquiry</li>
+          </ul>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">Phone Calls: The Highest Intent Channel</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            Not all leads are equal. Someone who picks up the phone and calls your business is demonstrating high intent. They've already:
+          </p>
+          
+          <ul class="space-y-2 mb-6 text-primary-700">
+            <li>• Identified a problem they need solved</li>
+            <li>• Decided they need professional help</li>
+            <li>• Researched options and found you</li>
+            <li>• Made the effort to call</li>
+          </ul>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            These high-intent leads are the most valuable — and the most time-sensitive. A missed call doesn't just mean a missed opportunity. It means that highly motivated buyer is now calling your competitor.
+          </p>
+          
+          <div class="bg-primary-950 rounded-xl p-6 my-8">
+            <h4 class="font-display font-semibold text-white mb-3">The Missed Call Math</h4>
+            <div class="space-y-2 text-primary-200">
+              <p>If you miss <span class="text-white font-semibold">5 calls per week</span></p>
+              <p>And <span class="text-white font-semibold">85%</span> never call back</p>
+              <p>And your conversion rate is <span class="text-white font-semibold">25%</span></p>
+              <p>And average job value is <span class="text-white font-semibold">$500</span></p>
+              <p class="pt-3 border-t border-primary-700 text-accent-400 font-bold">You're losing: 5 × 85% × 25% × $500 × 52 weeks = $27,625/year</p>
+            </div>
+          </div>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">Why Businesses Struggle with Speed to Lead</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            Most businesses know response time matters. So why do they still struggle?
+          </p>
+          
+          <ul class="space-y-3 mb-6 text-primary-700">
+            <li><strong>You're doing the work:</strong> When you're on a job site, in a meeting, or with a client, you can't answer the phone.</li>
+            <li><strong>After hours:</strong> Leads don't only come in during business hours. Evenings, weekends, and holidays are peak research times.</li>
+            <li><strong>Call volume spikes:</strong> Storms, seasons, and marketing campaigns create call surges you can't staff for.</li>
+            <li><strong>Human limitations:</strong> Even the best receptionist can only handle one call at a time.</li>
+          </ul>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">The AI Solution</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-4">
+            AI answering services solve the speed-to-lead problem completely:
+          </p>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-primary-700"><strong>Zero wait time:</strong> Every call answered instantly, 24/7/365</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-primary-700"><strong>Unlimited capacity:</strong> Handle 100 simultaneous calls during a storm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-primary-700"><strong>Immediate qualification:</strong> Gather lead info while interest is hot</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-primary-700"><strong>Instant booking:</strong> Schedule appointments before they hang up</span>
+            </li>
+          </ul>
+          
+          <h2 class="font-display text-2xl font-bold text-primary-950 mt-12 mb-4">Experience Instant Response</h2>
+          
+          <p class="text-primary-700 leading-relaxed mb-6">
+            Want to see what instant response feels like from the caller's perspective? Call our AI demo line:
+          </p>
+          
+          <div class="bg-primary-950 rounded-2xl p-8 text-center">
+            <p class="text-primary-300 mb-4">Experience zero-wait-time answering:</p>
+            <a href="tel:877-482-4368" class="inline-flex items-center gap-3 text-3xl font-display font-bold text-white hover:text-accent-400 transition-colors">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              877-482-4368
+            </a>
+          </div>
+        </article>
+        
+        <div class="mt-16 pt-8 border-t border-primary-200">
+          <h3 class="font-display font-bold text-primary-950 text-xl mb-6">Related Articles</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="/learn/missed-call-revenue-calculator" class="card p-4 group hover:border-accent-300">
+              <h4 class="font-display font-semibold text-primary-950 group-hover:text-accent-600 transition-colors">Missed Call Revenue Calculator</h4>
+              <p class="text-primary-600 text-sm mt-1">Calculate your losses</p>
+            </a>
+            <a href="/learn/what-is-ai-receptionist" class="card p-4 group hover:border-accent-300">
+              <h4 class="font-display font-semibold text-primary-950 group-hover:text-accent-600 transition-colors">What is an AI Receptionist?</h4>
+              <p class="text-primary-600 text-sm mt-1">Complete overview</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+interface Industry {
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const industries: Industry[] = [
+  {
+    name: "Roofing",
+    slug: "roofing",
+    description: "Never miss a storm damage call. AI handles estimates, scheduling, and emergency requests 24/7.",
+    icon: "home"
+  },
+  {
+    name: "HVAC",
+    slug: "hvac",
+    description: "Capture every AC emergency and heating call. Book service appointments automatically.",
+    icon: "sun"
+  },
+  {
+    name: "Plumbing",
+    slug: "plumbing",
+    description: "Emergency plumbing calls at 2 AM? Your AI employee handles it while you sleep.",
+    icon: "droplet"
+  },
+  {
+    name: "Equine Transport",
+    slug: "equine-transport",
+    description: "Coordinate horse transport logistics, quotes, and scheduling with intelligent AI assistance.",
+    icon: "truck"
+  }
+];
+
+const { 
+  title = "Built for Service Businesses",
+  subtitle = "AI Employees customized for your industry. Trained on your services, pricing, and processes."
+} = Astro.props;
+
+const iconPaths: Record<string, string> = {
+  "home": "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  "sun": "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+  "droplet": "M12 21c-4.97 0-9-4.03-9-9 0-3.53 2.04-6.58 5-8.03C9.35 6.59 12 10 12 10s2.65-3.41 4-6.03c2.96 1.45 5 4.5 5 8.03 0 4.97-4.03 9-9 9z",
+  "truck": "M8 17h8M8 17H6a2 2 0 01-2-2V7a2 2 0 012-2h7l5 5v5a2 2 0 01-2 2h-2M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"
+};
+---
+
+<section class="section-padding bg-white">
+  <div class="container-width">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
+        {title}
+      </h2>
+      <p class="text-primary-600 text-lg max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {industries.map((industry, index) => (
+        <a 
+          href={`/industries/${industry.slug}`}
+          class="card p-6 group hover:border-accent-300 hover:shadow-lg transition-all duration-300"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <div class="w-14 h-14 mb-4 bg-accent-100 rounded-xl flex items-center justify-center group-hover:bg-accent-500 transition-colors duration-300">
+            <svg 
+              class="w-7 h-7 text-accent-600 group-hover:text-white transition-colors duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[industry.icon]} />
+            </svg>
+          </div>
+          
+          <h3 class="font-display font-semibold text-primary-950 text-xl mb-2 group-hover:text-accent-600 transition-colors">
+            {industry.name}
+          </h3>
+          
+          <p class="text-primary-600 text-sm leading-relaxed mb-4">
+            {industry.description}
+          </p>
+          
+          <span class="inline-flex items-center text-accent-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Learn more
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <p class="text-primary-600 mb-4">Don't see your industry? We customize AI for any business.</p>
+      <a href="/contact" class="btn-secondary">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pageTitle = "Pricing";
+const pageDescription = "Simple, transparent pricing for AI Employees. Choose the plan that fits your business. All plans include setup and onboarding. No contracts — cancel anytime.";
+
+const pricingFAQs = [
+  {
+    question: "Is there a setup fee?",
+    answer: "Yes, there is a one-time setup fee based on the scope of your project. This covers custom AI training for your business, integration setup, and onboarding. We'll discuss this during your strategy session."
+  },
+  {
+    question: "Can I change plans later?",
+    answer: "Absolutely. You can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle."
+  },
+  {
+    question: "Is there a contract or commitment?",
+    answer: "No long-term contracts. All plans are month-to-month and you can cancel anytime. We also offer annual plans with savings if you prefer."
+  },
+  {
+    question: "What's included in the setup?",
+    answer: "Setup includes custom AI voice and chat training for your business, CRM configuration, workflow automation setup, phone number provisioning, and a personalized onboarding session to make sure everything works perfectly."
+  },
+  {
+    question: "Are there any usage limits?",
+    answer: "Plans include generous usage allowances. If you have extremely high call or message volumes, we'll work with you on a custom plan. Most businesses never hit the limits."
+  },
+  {
+    question: "Do you offer a free trial?",
+    answer: "We don't offer a free trial, but we do offer a live demo where you can call and experience the AI yourself. Call 877-482-4368 to try it right now."
+  }
+];
+
+// Pricing page schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Employee Pricing",
+  "description": pageDescription,
+  "mainEntity": {
+    "@type": "Product",
+    "name": "AI Employee Service",
+    "description": "AI-powered voice and chat assistants for local businesses",
+    "brand": {
+      "@type": "Brand",
+      "name": "Creative Integrations"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Pro Plan",
+        "price": "397",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "397",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M",
+          "unitText": "month"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium Plan",
+        "price": "697",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "697",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M",
+          "unitText": "month"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Elite Plan",
+        "price": "997",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "997",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M",
+          "unitText": "month"
+        }
+      }
+    ]
+  }
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} schema={schema}>
+  <!-- Hero -->
+  <section class="bg-gradient-hero relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"></div>
+    
+    <div class="relative container-width section-padding text-center">
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Simple, Transparent<br />
+        <span class="text-gradient">Pricing</span>
+      </h1>
+      <p class="text-xl text-primary-200 max-w-2xl mx-auto">
+        Choose the plan that fits your business. All plans include setup, onboarding, and ongoing support.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Pricing Table -->
+  <PricingTable />
+  
+  <!-- What's Included -->
+  <section class="section-padding bg-white">
+    <div class="container-width">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
+          What's Included in Every Plan
+        </h2>
+        <p class="text-primary-600 text-lg max-w-2xl mx-auto">
+          No hidden fees. No surprises. Every plan includes these essentials.
+        </p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {[
+          { title: "Custom AI Training", description: "AI trained on your business, services, and processes" },
+          { title: "Onboarding Session", description: "Personalized setup and walkthrough with our team" },
+          { title: "Phone Number", description: "Dedicated business phone number included" },
+          { title: "Ongoing Support", description: "Chat support to help you succeed" }
+        ].map((item) => (
+          <div class="text-center p-6">
+            <div class="w-12 h-12 mx-auto mb-4 bg-accent-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-primary-950 mb-2">{item.title}</h3>
+            <p class="text-primary-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pricing FAQ -->
+  <FAQSection 
+    title="Pricing Questions" 
+    faqs={pricingFAQs}
+  />
+  
+  <CTASection 
+    headline="Ready to Get Started?"
+    subheadline="Join businesses across America using AI Employees to capture more leads and close more deals."
+  />
+</BaseLayout>
