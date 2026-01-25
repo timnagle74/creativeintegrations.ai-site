@@ -230,10 +230,10 @@ creativeintegrations-site/
 ></iframe>
 ```
 
-### Calendar Booking
+### Calendar Booking (Personalized Demo)
 ```html
 <iframe 
-  src="https://updates.creativeintegrations.com/widget/booking/3lQs0LfGz6gdQVCm4gm1"
+  src="https://updates.creativeintegrations.com/widget/booking/y9ck0MyOEOAz1S15u1Zl"
   ...
 ></iframe>
 ```
