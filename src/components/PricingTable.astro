@@ -130,7 +130,9 @@ const { tiers = defaultTiers } = Astro.props;
               <span class={`font-display font-bold text-5xl ${tier.highlighted ? 'text-white' : 'text-primary-950'}`}>
                 {tier.price}
               </span>
-              <span class={tier.highlighted ? 'text-primary-300' : 'text-primary-500'}>/month</span>
+              {tier.price.startsWith('$') && (
+                <span class={tier.highlighted ? 'text-primary-300' : 'text-primary-500'}>/month</span>
+              )}
             </div>
             <p class={`text-sm ${tier.highlighted ? 'text-primary-300' : 'text-primary-600'}`}>
               {tier.description}
