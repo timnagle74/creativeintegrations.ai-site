@@ -1,0 +1,387 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const pageTitle = "AI Voice Agents for Enterprise Call Centers";
+const pageDescription = "Scale your call center operations with AI that handles thousands of concurrent calls. 80% resolution rate, 48-hour deployment, seamless CRM integrations.";
+
+const benefits = [
+  {
+    title: "Massive Concurrency",
+    description: "Handle thousands of simultaneous calls without hiring. Scale instantly during peak periods with zero wait times for customers.",
+    icon: "trending-up"
+  },
+  {
+    title: "80%+ Resolution Rate",
+    description: "Not just call deflection — real resolution. AI handles complete interactions from greeting to outcome, reducing transfers and callbacks.",
+    icon: "check-circle"
+  },
+  {
+    title: "48-Hour Deployment",
+    description: "New call flows live in 48 hours, not 48 weeks. Our rapid deployment framework means faster time-to-value for enterprise implementations.",
+    icon: "zap"
+  },
+  {
+    title: "Enterprise Integrations",
+    description: "Native connections to Salesforce, HubSpot, Zendesk, ServiceNow, and 50+ enterprise platforms. Real-time CRM sync on every call.",
+    icon: "link"
+  },
+  {
+    title: "Compliance & Security",
+    description: "PCI-DSS compliant, HIPAA-ready, SOC 2 certified. Call recording, consent management, and audit logs built in.",
+    icon: "shield"
+  },
+  {
+    title: "Real-Time Analytics",
+    description: "Live dashboards showing call volume, resolution rates, sentiment analysis, and agent performance. Data-driven decisions in real time.",
+    icon: "chart"
+  }
+];
+
+const integrations = [
+  { name: "Salesforce", category: "CRM", logo: "https://cdn.simpleicons.org/salesforce" },
+  { name: "HubSpot", category: "CRM", logo: "https://cdn.simpleicons.org/hubspot" },
+  { name: "Zendesk", category: "Support", logo: "https://cdn.simpleicons.org/zendesk" },
+  { name: "ServiceNow", category: "ITSM", logo: "https://cdn.simpleicons.org/servicenow" },
+  { name: "Microsoft Dynamics", category: "CRM", logo: "https://cdn.simpleicons.org/dynamics365" },
+  { name: "Zoho CRM", category: "CRM", logo: "https://cdn.simpleicons.org/zoho" },
+  { name: "Freshdesk", category: "Support", logo: "https://cdn.simpleicons.org/freshdesk" },
+  { name: "Intercom", category: "Support", logo: "https://cdn.simpleicons.org/intercom" },
+  { name: "Slack", category: "Communication", logo: "https://cdn.simpleicons.org/slack" },
+  { name: "Microsoft Teams", category: "Communication", logo: "https://cdn.simpleicons.org/microsoftteams" },
+  { name: "Twilio", category: "Telephony", logo: "https://cdn.simpleicons.org/twilio" },
+  { name: "Aircall", category: "Telephony", logo: "https://cdn.simpleicons.org/aircall" }
+];
+
+const stats = [
+  { value: "80%+", label: "Calls Fully Resolved" },
+  { value: "70%", label: "Cost Reduction" },
+  { value: "48hrs", label: "Deployment Time" },
+  { value: "0sec", label: "Wait Time" }
+];
+
+const faqs = [
+  {
+    question: "How many concurrent calls can your AI handle?",
+    answer: "Our enterprise platform scales to thousands of concurrent calls. We work with you to provision capacity based on your peak volumes and can auto-scale during unexpected spikes. There's no practical limit — if you need 10,000 simultaneous calls, we can handle it."
+  },
+  {
+    question: "What's the difference between resolution and deflection?",
+    answer: "Call deflection just routes calls away from humans — often frustrating customers. Resolution means the AI completes the entire interaction: answering questions, updating accounts, processing requests, and reaching a satisfactory outcome. Our 80%+ resolution rate means real completed interactions, not just transferred problems."
+  },
+  {
+    question: "How do enterprise integrations work?",
+    answer: "We offer native connectors for major CRM, support, and telephony platforms. Data syncs in real-time — when a call ends, customer records are already updated with call summaries, intent tags, and next actions. For custom systems, we provide webhooks and APIs for any integration."
+  },
+  {
+    question: "What compliance certifications do you have?",
+    answer: "We maintain PCI-DSS compliance for payment handling, HIPAA compliance for healthcare, and SOC 2 Type II certification. We also support GDPR requirements including consent management and data handling controls. Custom compliance requirements can be addressed in enterprise agreements."
+  },
+  {
+    question: "How does pricing work for enterprise?",
+    answer: "Enterprise pricing is based on usage volume with committed capacity discounts. We offer per-minute pricing with no hidden fees or implementation charges. Volume commitments unlock better rates. Contact us for a custom quote based on your call volumes and requirements."
+  },
+  {
+    question: "Can we do a pilot before full deployment?",
+    answer: "Absolutely. Most enterprise clients start with a pilot on a specific use case or call type. We can have a pilot running in 48 hours. You'll see real metrics on resolution rates, handling time, and customer satisfaction before scaling to full deployment."
+  }
+];
+
+const iconPaths: Record<string, string> = {
+  "trending-up": "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+  "check-circle": "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  "zap": "M13 10V3L4 14h7v7l9-11h-7z",
+  "link": "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+  "shield": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  "chart": "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Voice Agents for Enterprise Call Centers",
+  "description": pageDescription,
+  "provider": {
+    "@type": "Organization",
+    "name": "Creative Integrations"
+  },
+  "serviceType": "Enterprise AI Call Center Automation",
+  "areaServed": "United States"
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} schema={schema}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden min-h-[500px]">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=1600&q=80" 
+        alt="Enterprise call center"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/80 to-primary-900/60"></div>
+    </div>
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
+    
+    <div class="relative container-width section-padding">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-accent-300 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-accent-400 rounded-full animate-pulse"></span>
+          Enterprise Solution
+        </div>
+        
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          AI Voice Agents for<br />
+          <span class="text-gradient">Enterprise Call Centers</span>
+        </h1>
+        
+        <p class="text-xl text-primary-200 mb-8 leading-relaxed">
+          Scale your call center with AI that actually resolves calls — not just deflects them. Thousands of concurrent calls, 80%+ resolution rate, deployed in 48 hours.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact?plan=enterprise" class="btn-primary">
+            Request Enterprise Demo
+          </a>
+          <a href="tel:877-482-4368" class="btn-secondary">
+            Talk to AI Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="bg-primary-900 border-y border-primary-700">
+    <div class="container-width py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="font-display text-3xl md:text-4xl font-bold text-accent-400 mb-1">{stat.value}</div>
+            <div class="text-primary-300 text-sm">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why Enterprise Section -->
+  <section class="section-padding bg-white">
+    <div class="container-width">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+          Built for Enterprise Scale
+        </h2>
+        <p class="text-xl text-primary-600 max-w-2xl mx-auto">
+          Not a startup experiment — proven AI infrastructure handling millions of calls for enterprise operations.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-lg bg-accent-100 text-accent-600 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[benefit.icon]} />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-primary-900 text-lg mb-2">{benefit.title}</h3>
+            <p class="text-primary-600">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations Section -->
+  <section class="section-padding bg-primary-50">
+    <div class="container-width">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+          Integrates With Your Stack
+        </h2>
+        <p class="text-xl text-primary-600 max-w-2xl mx-auto">
+          Native connectors for 50+ enterprise platforms. Real-time sync, no manual data entry.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {integrations.map((integration) => (
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 mx-auto mb-3">
+              <img 
+                src={integration.logo} 
+                alt={`${integration.name} logo`}
+                class="w-full h-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div class="font-medium text-primary-900">{integration.name}</div>
+            <div class="text-xs text-primary-500">{integration.category}</div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-primary-600">
+          Don't see your platform? We build custom integrations via webhooks and APIs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="section-padding bg-white">
+    <div class="container-width">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+          Enterprise Use Cases
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="card-dark p-8">
+          <h3 class="font-display font-bold text-white text-xl mb-4">Inbound Support</h3>
+          <ul class="space-y-3 text-primary-200">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Tier 1 support resolution without human escalation
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Account inquiries, order status, billing questions
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Smart routing and warm transfers when needed
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-dark p-8">
+          <h3 class="font-display font-bold text-white text-xl mb-4">Outbound Campaigns</h3>
+          <ul class="space-y-3 text-primary-200">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Appointment reminders and confirmations
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Payment collection and renewal calls
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Survey and feedback collection at scale
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-dark p-8">
+          <h3 class="font-display font-bold text-white text-xl mb-4">Sales & Lead Qualification</h3>
+          <ul class="space-y-3 text-primary-200">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Inbound lead capture and qualification
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Meeting scheduling with sales reps
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Product information and pricing inquiries
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-dark p-8">
+          <h3 class="font-display font-bold text-white text-xl mb-4">Overflow & After-Hours</h3>
+          <ul class="space-y-3 text-primary-200">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Handle call spikes without adding headcount
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              24/7 coverage without night shift staffing
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Disaster recovery and business continuity
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-primary-50">
+    <div class="container-width">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+          Enterprise Questions
+        </h2>
+      </div>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <details class="card p-6 group">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <h3 class="font-display font-semibold text-primary-900 pr-4">{faq.question}</h3>
+              <svg class="w-5 h-5 text-primary-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-4 text-primary-600">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Enterprise CTA -->
+  <section class="section-padding bg-gradient-hero">
+    <div class="container-width text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+        Ready to Scale Your Call Center?
+      </h2>
+      <p class="text-xl text-primary-200 max-w-2xl mx-auto mb-8">
+        Let's discuss your volume, requirements, and build a custom solution. Pilot programs available.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact?plan=enterprise" class="btn-primary">
+          Request Enterprise Demo
+        </a>
+        <a href="tel:877-482-4368" class="btn-secondary">
+          Call: 877-482-4368
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

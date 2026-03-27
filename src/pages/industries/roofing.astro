@@ -91,9 +91,16 @@ const schema = {
 
 <BaseLayout title={pageTitle} description={pageDescription} schema={schema}>
   <!-- Hero -->
-  <section class="bg-gradient-hero relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg"></div>
-    <div class="absolute top-0 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"></div>
+  <section class="relative overflow-hidden min-h-[500px]">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1635424710928-0544e8512eae?w=1600&q=80" 
+        alt="Roofing contractor at work"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/80 to-primary-900/60"></div>
+    </div>
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
     
     <div class="relative container-width section-padding">
       <div class="max-w-3xl">
