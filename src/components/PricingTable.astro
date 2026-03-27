@@ -69,6 +69,25 @@ const defaultTiers: PricingTier[] = [
     ],
     cta: "Get Started",
     ctaLink: "/contact?plan=elite"
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    description: "High-volume operations with dedicated support & custom integrations",
+    features: [
+      "Everything in Elite",
+      "Unlimited calls & chats",
+      "Multi-location support",
+      "Dedicated account manager",
+      "Priority phone support",
+      "Custom AI training",
+      "API access",
+      "Custom integrations",
+      "99.9% uptime SLA",
+      "Quarterly business reviews"
+    ],
+    cta: "Contact Us",
+    ctaLink: "/contact?plan=enterprise"
   }
 ];
 
@@ -86,7 +105,7 @@ const { tiers = defaultTiers } = Astro.props;
       </p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
       {tiers.map((tier, index) => (
         <div 
           class={`relative rounded-2xl p-8 transition-all duration-300 ${
