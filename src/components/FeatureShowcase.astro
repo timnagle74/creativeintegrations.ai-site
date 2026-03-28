@@ -12,6 +12,8 @@ interface Feature {
   description: string;
   stats?: { value: string; label: string }[];
   visual: 'voice' | 'chat' | 'reviews' | 'availability' | 'workflow' | 'calendar' | 'mobile';
+  image: string;
+  imageAlt: string;
 }
 
 const features: Feature[] = [
@@ -21,6 +23,8 @@ const features: Feature[] = [
     badgeIcon: 'M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z',
     headline: 'Maximize phone call engagement',
     description: 'Never miss another call. AI Voice Employee answers instantly, qualifies leads, books appointments, and transfers urgent calls to your team — 24/7.',
+    image: '/images/features/voice-ai.png',
+    imageAlt: 'AI receptionist with headset handling incoming call',
     stats: [
       { value: '67%', label: 'of customers hang up without immediate assistance' },
       { value: '85%', label: 'of missed calls never call back' },
@@ -34,6 +38,8 @@ const features: Feature[] = [
     badgeIcon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
     headline: 'Immediately responding to Texts & Chats turn leads into customers',
     description: 'Maximizing engagement means turning every interaction into an opportunity for growth. By implementing effective strategies, you can foster deeper connections with your customers, improve response rates, and enhance overall communication.',
+    image: '/images/features/chat-ai.png',
+    imageAlt: 'iPhone showing business text message conversation',
   },
   {
     id: 'reviews',
@@ -41,6 +47,8 @@ const features: Feature[] = [
     badgeIcon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
     headline: 'Draw in new customers through positive reviews',
     description: 'Positive reviews act as powerful endorsements that can influence potential customers and boost your credibility. By showcasing authentic feedback, you can build trust, enhance your reputation, and stand out in a competitive market.',
+    image: '/images/features/reviews-ai.png',
+    imageAlt: 'Happy business owner viewing 5-star reviews on tablet',
   },
   {
     id: 'availability',
@@ -48,6 +56,8 @@ const features: Feature[] = [
     badgeIcon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
     headline: 'Double the speed of lead generation',
     description: 'Speed up your lead generation efforts, ensuring you reach potential customers more quickly and efficiently. By streamlining your process, you can maximize outreach, increase conversion rates, and stay ahead of the competition.',
+    image: '/images/features/availability.png',
+    imageAlt: '24/7 availability digital display',
   },
   {
     id: 'workflow',
@@ -55,6 +65,8 @@ const features: Feature[] = [
     badgeIcon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
     headline: 'Create intelligent, data-driven campaigns',
     description: 'Develop campaigns that are not only effective but also efficient, using intelligent strategies to reach the right audience at the right time. By leveraging data and advanced tools, you can create personalized experiences that drive higher engagement and deliver measurable success.',
+    image: '/images/features/workflow-ai.png',
+    imageAlt: 'Laptop showing workflow automation builder interface',
   },
   {
     id: 'calendar',
@@ -62,6 +74,8 @@ const features: Feature[] = [
     badgeIcon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
     headline: 'Instantly fill your calendar',
     description: 'Say goodbye to missed sales opportunities! Creative Integrations makes scheduling appointments feel magically easy so that you can close more deals!',
+    image: '/images/features/calendar.png',
+    imageAlt: 'Tablet showing appointment scheduling calendar',
   },
   {
     id: 'mobile',
@@ -69,6 +83,8 @@ const features: Feature[] = [
     badgeIcon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
     headline: 'AI powered CRM in the palm of your hands',
     description: 'Develop campaigns that are not only effective but also efficient, using intelligent strategies to reach the right audience at the right time. By leveraging data and advanced tools, you can create personalized experiences that drive higher engagement and deliver measurable success.',
+    image: '/images/features/mobile-app.png',
+    imageAlt: 'Three smartphones showing CRM mobile app dashboards',
   },
 ];
 ---
@@ -134,76 +150,12 @@ const features: Feature[] = [
             index % 2 === 1 ? "lg:order-1" : ""
           ]} data-animate={index % 2 === 0 ? "fade-left" : "fade-right"}>
             <div class="relative">
-              <!-- Placeholder for custom visuals - using CSS mockups -->
-              {feature.visual === 'voice' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/voice-ai.png" 
-                    alt="AI receptionist with headset handling incoming call"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'chat' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/chat-ai.png" 
-                    alt="iPhone showing business text message conversation"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'reviews' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/reviews-ai.png" 
-                    alt="Happy business owner viewing 5-star reviews on tablet"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'availability' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/availability.png" 
-                    alt="24/7 availability digital display"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'workflow' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/workflow-ai.png" 
-                    alt="Laptop showing workflow automation builder interface"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'calendar' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/calendar.png" 
-                    alt="Tablet showing appointment scheduling calendar"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
-              
-              {feature.visual === 'mobile' && (
-                <div class="relative">
-                  <img 
-                    src="/images/features/mobile-app.png" 
-                    alt="Three smartphones showing CRM mobile app dashboards"
-                    class="rounded-3xl shadow-2xl w-full"
-                  />
-                </div>
-              )}
+              <img 
+                src={feature.image}
+                alt={feature.imageAlt}
+                class="rounded-3xl shadow-2xl w-full"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
