@@ -11,7 +11,7 @@ interface Feature {
   headline: string;
   description: string;
   stats?: { value: string; label: string }[];
-  visual: 'voice' | 'chat' | 'reviews' | 'availability' | 'workflow' | 'calendar' | 'mobile';
+  visual: 'voice' | 'chat' | 'reviews' | 'workflow' | 'calendar' | 'mobile';
   image: string;
   imageAlt: string;
 }
@@ -19,17 +19,17 @@ interface Feature {
 const features: Feature[] = [
   {
     id: 'voice',
-    badge: 'Voice AI',
+    badge: 'Voice AI - 24/7',
     badgeIcon: 'M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z',
-    headline: 'Maximize phone call engagement',
-    description: 'Never miss another call. AI Voice Employee answers instantly, qualifies leads, books appointments, and transfers urgent calls to your team — 24/7.',
+    headline: 'Your AI receptionist that never sleeps',
+    description: 'Never miss another call - day or night. Your AI Voice Employee answers instantly 24/7, qualifies leads, books appointments, and transfers urgent calls to your team. While you sleep, your business keeps winning.',
     image: '/images/features/voice-ai.png',
-    imageAlt: 'AI receptionist with headset handling incoming call',
+    imageAlt: 'AI voice assistant answering calls 24/7',
     stats: [
       { value: '67%', label: 'of customers hang up without immediate assistance' },
       { value: '85%', label: 'of missed calls never call back' },
       { value: '92%', label: 'of customer interactions happen over the phone' },
-      { value: '75%', label: 'of consumers believe calling is fastest for response' },
+      { value: '24/7', label: 'availability - your AI never takes a break' },
     ]
   },
   {
@@ -49,15 +49,6 @@ const features: Feature[] = [
     description: 'Positive reviews act as powerful endorsements that can influence potential customers and boost your credibility. By showcasing authentic feedback, you can build trust, enhance your reputation, and stand out in a competitive market.',
     image: '/images/features/reviews-ai.png',
     imageAlt: 'Happy business owner viewing 5-star reviews on tablet',
-  },
-  {
-    id: 'availability',
-    badge: '24/7 on call',
-    badgeIcon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-    headline: 'Double the speed of lead generation',
-    description: 'Speed up your lead generation efforts, ensuring you reach potential customers more quickly and efficiently. By streamlining your process, you can maximize outreach, increase conversion rates, and stay ahead of the competition.',
-    image: '/images/features/availability.png',
-    imageAlt: '24/7 availability digital display',
   },
   {
     id: 'workflow',
